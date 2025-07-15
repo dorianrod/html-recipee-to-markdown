@@ -1,0 +1,54 @@
+name: Publish Docker image to GHCR
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get version from package.json
+        id: vars
+        run: |
+          VERSION_TAG=$(node -p "require('./package.json').version")
+          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
+
+      - name: Build image once
+        run: |
+          docker build \
+            --tag html-recipee-to-markdown-temp \
+            .
+
+      - name: Tag image with version and latest
+        run: |
+          docker tag html-recipee-to-markdown-temp ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.VERSION_TAG }}
+          docker tag html-recipee-to-markdown-temp ghcr.io/${{ github.repository }}:latest
+
+      - name: Push both tags
+        run: |
+          docker push ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.VERSION_TAG }}
+          docker push ghcr.io/${{ github.repository }}:latest
