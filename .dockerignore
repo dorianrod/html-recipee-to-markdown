@@ -1,0 +1,38 @@
+# Dependancies
+node_modules
+.pnpm
+.yarn
+*.tsbuildinfo
+
+# Builds
+dist
+coverage
+*.log
+
+# Environment
+.env
+.env.*.local
+
+# Tools & config
+.vscode
+.DS_Store
+*.swp
+*.swo
+
+# Git & CI
+.git
+.github
+
+# Tests
+*.test.ts
+*.spec.ts
+__tests__/
+jest.config.*
+playwright-report
+test-results/
+
+# Others
+Dockerfile*
+docker-compose*
+*.md
+LICENSE
