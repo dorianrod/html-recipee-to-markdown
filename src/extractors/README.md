@@ -1,0 +1,1 @@
+Functions for extracting structured data (title, content, thumbnail, etc.) from an already loaded web page. These extractors facilitate the retrieval and organization of essential information for further processing or analysis.

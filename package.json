@@ -1,0 +1,75 @@
+{
+  "name": "html-recipee-to-markdown",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "`html-recipee-to-markdown` is an api to convert recipee web pages to markdown content.",
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist & tsup ",
+    "start:prod": "node dist/server.js",
+    "clean": "rimraf dist",
+    "commit": "cz",
+    "commitlint": "commitlint --edit",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "tsx src/api/server.ts",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "release": "semantic-release"
+  },
+  "author": "Dorian Rodriguez <kucherenko.andrey@gmail.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.3",
+    "@jest/globals": "^29.7.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.12",
+    "@types/prompts": "^2.4.9",
+    "@types/signale": "^1.4.7",
+    "@types/yargs": "^17.0.32",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "babel-jest": "^30.0.4",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-unused-imports": "^3.2.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.4",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7",
+    "semantic-release": "^23.1.1",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "consola": "^3.2.3",
+    "esbuild": "^0.25.6",
+    "express": "^4.19.2",
+    "playwright": "^1.36.0",
+    "yargs": "^17.7.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
