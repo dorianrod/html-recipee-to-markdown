@@ -21,10 +21,9 @@
     "lint:fix": "eslint . --fix",
     "start": "tsx src/api/server.ts",
     "test": "jest",
-    "test:watch": "jest --watchAll",
-    "release": "semantic-release"
+    "test:watch": "jest --watchAll"
   },
-  "author": "Dorian Rodriguez <kucherenko.andrey@gmail.com>",
+  "author": "Dorian Rodriguez <dorian.r.me@gmail.com>",
   "license": "UNLICENSED",
   "devDependencies": {
     "@babel/core": "^7.28.0",
